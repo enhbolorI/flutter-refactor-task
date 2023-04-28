@@ -11,20 +11,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:refactor_task/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+  testWidgets("Flutter Widget Test",  (WidgetTester tester) async {
+    await tester.pumpWidget(const MyApp());
+    var button = find.byTooltip("change view listener");
+    expect(button,findsOneWidget);
+    debugPrint('change view listener');
+    await tester.tap(button);
     await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
   });
 }
